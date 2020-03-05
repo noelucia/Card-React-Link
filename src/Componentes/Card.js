@@ -1,24 +1,28 @@
 import React from "react";
 import "./Card.css";
+import { useParams } from "react-router-dom";
+import cards from './infoCards'
 
-const Card = props => {
+const Card = () => {
+  let { id } = useParams();
+  const card = cards[id]
   return (
     <section className="todo">
       <section
         className="card"
-        style={{ backgroundImage: `url(${props.img})` }}>
+        style={{ backgroundImage: `url(${card.img})` }}>
         <div className="contenedor-Texto">
           <p className="powerful">
-          {props.subtitle}
+          {card.subtitle}
           </p>
-          <h1 style={{color: props.color}}>{props.title}</h1>
+          <h1 style={{color: card.color}}>{card.title}</h1>
           <p>
-           {props.texto}
+           {card.texto}
           </p>
           <a
             href="https://www.linkedin.com/in/noelia-luc%C3%ADa-rodr%C3%ADguez/"
             className="link"
-            style={{color: props.color}}>
+            style={{color: card.color}}>
             LINK
           </a>
         </div>
@@ -26,7 +30,7 @@ const Card = props => {
           <i
             className="fa fa-chevron-circle-down"
             aria-hidden="true"
-            style={{color: props.color}}
+            style={{color: card.color}}
           ></i>
         </div>
       </section>
